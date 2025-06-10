@@ -35,13 +35,14 @@
   ), hsl(240, 2%, 13%);
   --bg-gradient-yellow-1: linear-gradient(
     to bottom right, 
-    hsl(45, 100%, 71%) 0%, 
-    hsla(36, 100%, 69%, 0) 50%
+    hsl(24, 100%, 60%) 0%, 
+    hsla(24, 100%, 60%, 0) 50%
   );
+
   --bg-gradient-yellow-2: linear-gradient(
     135deg, 
-    hsla(45, 100%, 71%, 0.251) 0%, 
-    hsla(35, 100%, 68%, 0) 59.86%
+    hsla(24, 100%, 60%, 0.25) 0%, 
+    hsla(24, 100%, 60%, 0) 60%
   ), hsl(240, 2%, 13%);
   --border-gradient-onyx: linear-gradient(
     to bottom right, 
@@ -50,8 +51,8 @@
   );
   --text-gradient-yellow: linear-gradient(
     to right, 
-    hsl(45, 100%, 72%), 
-    hsl(35, 100%, 68%)
+    hsl(24, 100%, 60%), 
+    hsl(20, 100%, 50%)
   );
 
   /* solid */
@@ -63,8 +64,8 @@
   --smoky-black: hsl(0, 0%, 7%);
   --white-1: hsl(0, 0%, 100%);
   --white-2: hsl(0, 0%, 98%);
-  --orange-yellow-crayola: hsl(45, 100%, 72%);
-  --vegas-gold: hsl(45, 54%, 58%);
+  --orange-yellow-crayola: hsl(24, 100%, 60%);
+  --vegas-gold: hsl(24, 70%, 50%);
   --light-gray: hsl(0, 0%, 84%);
   --light-gray-70: hsla(0, 0%, 84%, 0.7);
   --bittersweet-shimmer: hsl(0, 43%, 51%);
@@ -875,7 +876,9 @@ main {
   #PORTFOLIO
 \*-----------------------------------*/
 
-.filter-list { display: none; }
+.filter-list { display: none; 
+align-items: stretch;
+margin-bottom: 100px;}
 
 .filter-select-box {
   position: relative;
@@ -1594,7 +1597,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .modal-avatar-box img { width: 80px; }
 
 
-
   /**
    * PORTFOLIO
    */
@@ -1605,12 +1607,13 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .filter-list {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 25px;
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: left; /* Spread items evenly */
+    gap: 20px; /* Adjust spacing between items */
     padding-left: 5px;
     margin-bottom: 30px;
   }
+
 
   .filter-item button {
     color: var(--light-gray);
