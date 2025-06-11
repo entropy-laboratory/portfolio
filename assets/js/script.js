@@ -113,6 +113,25 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+  const hash = window.location.hash;
+
+  if (hash === "#blog") {
+    showSection("blog"); // You should have this function for your navigation
+  }
+});
+
+function showSection(sectionId) {
+  // Hide all sections
+  document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
+
+  // Show the targeted one
+  document.getElementById(sectionId).style.display = "block";
+
+  // Optional: update active navbar styling
+  document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
+  document.querySelector(`[data-section="${sectionId}"]`)?.classList.add("active");
+}
 
 
 // contact form variables
