@@ -229,47 +229,66 @@
             </div>
 
             <div class="music-player">
-            <div class="music-player-header">
+              <!-- Playlist -->
+              <ul class="playlist" id="playlist">
+                <li data-src="../assets/soundsamples/snd_voiceover_demo.mp3" data-title="Demo Mix" data-artist="Rafał"">
+                  <span>Demo Mix</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_voiceover_adv.mp3" data-title="Commercial" data-artist="Rafał">
+                  <span>Commercial</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_voiceover_audiobook.mp3" data-title="Audiobook" data-artist="Rafał">
+                  <span>Audiobook</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_voiceover_ivr.mp3" data-title="IVR" data-artist="Rafał">
+                  <span>IVR</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_voiceover_narrative.mp3" data-title="Narration" data-artist="Rafał">
+                  <span>Narration</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_voiceover_webin.mp3" data-title="Webinar" data-artist="Rafał">
+                  <span>Webinar</span>
+                </li>
+              </ul>
+
+              <!-- Player UI -->
+              <div class="music-player-header">
                 <div class="icon-box">
-                    <ion-icon name="musical-notes-outline"></ion-icon>
+                  <ion-icon name="musical-notes-outline"></ion-icon>
                 </div>
                 <div class="music-info">
-                    <h4 class="h4 music-title">Music Sample</h4>
-                    <span class="music-artist">Artist Name</span>
+                  <h4 class="h4 music-title">Select a Track</h4>
+                  <span class="music-artist">No track loaded</span>
                 </div>
-            </div>
-            
-            <div class="music-controls">
+              </div>
+
+              <div class="music-controls">
                 <button class="control-btn" id="playPauseBtn">
-                    <ion-icon name="play-outline"></ion-icon>
+                  <ion-icon name="play-outline"></ion-icon>
                 </button>
                 <button class="control-btn" id="stopBtn">
-                    <ion-icon name="stop-outline"></ion-icon>
+                  <ion-icon name="stop-outline"></ion-icon>
                 </button>
-            </div>
-            
-            <div class="music-progress">
+              </div>
+
+              <div class="music-progress">
                 <div class="progress-bar">
-                    <div class="progress-fill"></div>
+                  <div class="progress-fill"></div>
                 </div>
                 <div class="time-info">
-                    <span class="current-time">0:00</span>
-                    <span class="total-time">0:00</span>
+                  <span class="current-time">0:00</span>
+                  <span class="total-time">0:00</span>
                 </div>
-            </div>
-            
-            <div class="volume-control">
+              </div>
+
+              <div class="volume-control">
                 <ion-icon name="volume-medium-outline"></ion-icon>
                 <div class="volume-slider">
-                    <div class="volume-fill"></div>
+                  <div class="volume-fill"></div>
                 </div>
-            </div>
-            
-            <audio id="audioPlayer" preload="metadata">
-                <source src="../assets/music/snd_R_demo-mix.mp3" type="audio/mpeg">
-                <!-- <source src="your-music-file.ogg" type="audio/ogg"> -->
-                Your browser does not support the audio element.
-            </audio>
+              </div>
+
+              <audio id="audioPlayer" preload="metadata"></audio>
             </div>
 
           </section>
