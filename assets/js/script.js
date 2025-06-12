@@ -1,20 +1,18 @@
 'use strict';
 
-
-
 // element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
+const elementToggleFunc = function (elem) {
+  elem.classList.toggle("active");
+};
 
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
 
 // sidebar toggle functionality for mobile
-sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-
-
+sidebarBtn.addEventListener("click", function () {
+  elementToggleFunc(sidebar);
+});
 
 // testimonials variables
 const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
@@ -31,29 +29,23 @@ const modalText = document.querySelector("[data-modal-text]");
 const testimonialsModalFunc = function () {
   modalContainer.classList.toggle("active");
   overlay.classList.toggle("active");
-}
+};
 
 // add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
+testimonialsItem.forEach(item => {
+  item.addEventListener("click", function () {
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
     modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
     modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
 
     testimonialsModalFunc();
-
   });
-
-}
+});
 
 // add click event to modal close button
 modalCloseBtn.addEventListener("click", testimonialsModalFunc);
 overlay.addEventListener("click", testimonialsModalFunc);
-
-
 
 // custom select variables
 const select = document.querySelector("[data-select]");
@@ -61,118 +53,95 @@ const selectItems = document.querySelectorAll("[data-select-item]");
 const selectValue = document.querySelector("[data-selecct-value]");
 const filterBtn = document.querySelectorAll("[data-filter-btn]");
 
-select.addEventListener("click", function () { elementToggleFunc(this); });
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
+select.addEventListener("click", function () {
+  elementToggleFunc(this);
+});
 
 // filter variables
 const filterItems = document.querySelectorAll("[data-filter-item]");
 
+// ✅ Updated filter function to support comma-separated values
 const filterFunc = function (selectedValue) {
+  filterItems.forEach(item => {
+    const categories = item.dataset.category
+      .toLowerCase()
+      .split(',')
+      .map(cat => cat.trim());
 
-  for (let i = 0; i < filterItems.length; i++) {
+    const matches = selectedValue === "all" || categories.includes(selectedValue);
 
-    if (selectedValue === "all") {
-      filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
+    item.classList.toggle("active", matches);
+  });
+};
 
-  }
+// add event in all select items
+selectItems.forEach(item => {
+  item.addEventListener("click", function () {
+    const selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    elementToggleFunc(select);
+    filterFunc(selectedValue);
+  });
+});
 
-}
-
-// add event in all filter button items for large screen
+// ✅ Updated large screen filter button functionality
 let lastClickedBtn = filterBtn[0];
 
-for (let i = 0; i < filterBtn.length; i++) {
-
-  filterBtn[i].addEventListener("click", function () {
-
-    let selectedValue = this.innerText.toLowerCase();
+filterBtn.forEach(btn => {
+  btn.addEventListener("click", function () {
+    const selectedValue = this.innerText.toLowerCase();
     selectValue.innerText = this.innerText;
     filterFunc(selectedValue);
 
     lastClickedBtn.classList.remove("active");
     this.classList.add("active");
     lastClickedBtn = this;
-
   });
+});
 
-}
-
+// show blog section if URL has #blog
 window.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash;
-
   if (hash === "#blog") {
-    showSection("blog"); // You should have this function for your navigation
+    showSection("blog");
   }
 });
 
 function showSection(sectionId) {
-  // Hide all sections
   document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-
-  // Show the targeted one
   document.getElementById(sectionId).style.display = "block";
-
-  // Optional: update active navbar styling
   document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
   document.querySelector(`[data-section="${sectionId}"]`)?.classList.add("active");
 }
-
 
 // contact form variables
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
+// add input event to all form inputs
+formInputs.forEach(input => {
+  input.addEventListener("input", function () {
     if (form.checkValidity()) {
       formBtn.removeAttribute("disabled");
     } else {
       formBtn.setAttribute("disabled", "");
     }
-
   });
-}
-
-
+});
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
-      }
-    }
-
+// add click event to all nav links
+navigationLinks.forEach((link, index) => {
+  link.addEventListener("click", function () {
+    pages.forEach((page, i) => {
+      const isActive = link.innerHTML.toLowerCase() === page.dataset.page;
+      page.classList.toggle("active", isActive);
+      navigationLinks[i].classList.toggle("active", isActive);
+    });
+    window.scrollTo(0, 0);
   });
-}
+});
