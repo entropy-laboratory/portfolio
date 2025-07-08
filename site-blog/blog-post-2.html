@@ -194,41 +194,239 @@
         - #POST
         -->
 
-        <article class="about active" data-page="about">
+      <article class="blog-post active" data-page="blog-post">
+        <header>
+          <h2 class="h2 article-title">Building My Ultimate Digital Guitar Pedalboard</h2>
 
-                    <li class="blog-post-item">
-          <a href="#">
-            <figure class="blog-banner-box">
-              <img
-                src="../assets/images/blog-2.jpg"
-                alt="Design conferences in 2022"
-                loading="lazy"
-              />
-            </figure>
+          <div class="blog-meta">
+            <p class="blog-category">Music Technology</p>
+            <span class="dot"></span>
+            <time datetime="2025-07-10">Jul 10, 2025</time>
+          </div>
+        </header>
 
-            <div class="blog-content">
-              <div class="blog-meta">
-                <p class="blog-category">Design</p>
+        <div class="blog-banner-box">
+          <img
+            src="../assets/images/project-10-5.png"
+            alt="Digital Guitar Pedalboard Setup"
+            loading="lazy"
+          />
+        </div>
 
-                <span class="dot"></span>
+        <div class="blog-content">
+          <p class="about-text">
+            Every guitarist chases <em>that tone</em>. But for me, it wasn't just about sound — it was about control, flexibility, and expression. I wanted a live-ready, software-powered pedalboard that merged pro-grade virtual effects with tactile control via both feet and fingers.
+          </p>
 
-                <time datetime="2022-02-23">Fab 23, 2022</time>
+          <p class="about-text">
+            That's how I ended up creating a compact, all-in-one <strong>Digital Soundboard Pedal Rig</strong>, built around <strong>REAPER</strong>, <strong>TouchOSC</strong>, <strong>ReaLearn</strong>, and a few clever tweaks.
+          </p>
+
+          <h3 class="h3">🚀 Why Build a Custom Guitar Rig?</h3>
+
+          <p class="about-text">
+            Traditional pedalboards are limited by physical space and fixed signal chains. My digital solution offers unlimited routing options, preset recall, and the ability to control every parameter from either a foot controller or touchscreen interface.
+          </p>
+
+          <div class="content-card">
+            <h4 class="h4">Key Advantages:</h4>
+            <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+              <li style="margin-bottom: 8px">Unlimited virtual pedal combinations</li>
+              <li style="margin-bottom: 8px">Complete recall of all settings</li>
+              <li style="margin-bottom: 8px">Dual control via foot and touchscreen</li>
+              <li style="margin-bottom: 8px">Compact, portable hardware setup</li>
+            </ul>
+          </div>
+
+          <h3 class="h3">🔧 Step-by-Step Build Process</h3>
+
+          <h4 class="h4">1. Core Components</h4>
+          <p class="about-text">
+            The backbone of this build includes REAPER DAW as the host, ReaLearn for MIDI/OSC mapping, TouchOSC for the touch interface, and a Bluetooth MIDI footswitch for hands-free control. The virtual amp and effects come from Neural DSP's Archetype: Plini and Valhalla DSP plugins.
+          </p>
+
+          <h4 class="h4">2. Hardware Setup</h4>
+          <p class="about-text">
+            I used a compact Windows 11 mini PC with a touchscreen display as the brain of the operation. The M-Wave Chocolate foot controller connects via Bluetooth, while an expression pedal handles real-time parameter control.
+          </p>
+
+          <div class="content-card">
+            <h4 class="h4">Hardware Specs:</h4>
+            <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+              <li style="margin-bottom: 8px">Intel NUC 11 Mini PC</li>
+              <li style="margin-bottom: 8px">10" Touchscreen Display</li>
+              <li style="margin-bottom: 8px">M-Wave Chocolate MIDI Footswitch</li>
+              <li style="margin-bottom: 8px">Mission Engineering Expression Pedal</li>
+            </ul>
+          </div>
+
+          <h4 class="h4">3. Software Configuration</h4>
+          <p class="about-text">
+            REAPER serves as the central hub, with ReaLearn handling all MIDI and OSC mappings. I designed a custom TouchOSC interface with sliders for real-time effect control and buttons for preset switching.
+          </p>
+
+          <h4 class="h4">4. FX Routing</h4>
+          <p class="about-text">
+            The signal chain runs through multiple tracks in REAPER, each dedicated to specific effects. This allows for parallel processing and complex routing that would be impossible with physical pedals.
+          </p>
+
+          <h3 class="h3">🧠 Advanced Features</h3>
+          <p class="about-text">
+            The system includes several pro-level features that make it performance-ready:
+          </p>
+          <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+            <li style="margin-bottom: 8px">Live preset switching with seamless transitions</li>
+            <li style="margin-bottom: 8px">TouchOSC scenes for different performance needs</li>
+            <li style="margin-bottom: 8px">Local OSC loopback for reliable wireless control</li>
+            <li style="margin-bottom: 8px">FX loop integration with hardware pedals</li>
+          </ul>
+
+          <h3 class="h3">🏁 Final Results</h3>
+          <p class="about-text">
+            The completed rig delivers professional-grade tone with unprecedented flexibility. It fits in a small backpack yet offers more control than a traditional pedalboard three times its size.
+          </p>
+
+          <h3 class="h3">💭 Future Improvements</h3>
+          <p class="about-text">
+            I'm currently working on adding song-specific preset management and a web-based remote control interface. The modular nature of the system makes it easy to expand and improve over time.
+          </p>
+
+          <p class="about-text">
+            This project proves that with the right software and creative thinking, you can build a guitar rig that surpasses traditional hardware limitations while remaining intuitive to play.
+          </p>
+        </div>
+
+        <section class="gallery-section">
+          <h3 class="h3 gallery-title">Project Gallery</h3>
+          
+          <div class="gallery-carousel">
+            <!-- Carousel container -->
+            <div class="carousel-container">
+              <!-- Slides -->
+
+              <div class="carousel-slide active">
+                <img src="../assets/images/project-10-1.png" alt="Project screenshot 1" loading="lazy">
+                <div class="slide-caption">Wiring up #1</div>
               </div>
-
-              <h3 class="h3 blog-item-title">
-                Design conferences in 2022
-              </h3>
-
-              <p class="blog-text">
-                Veritatis et quasi architecto beatae vitae dicta sunt,
-                explicabo. Veritatis et quasi architecto beatae vitae dicta sunt,
-                explicabo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda velit aspernatur id, vitae ipsa minima minus maxime laudantium dicta dolorum quia, atque necessitatibus libero consectetur odio. Temporibus quos, laborum nemo accusantium atque iste fuga vitae incidunt non harum eos ut labore ab, molestias veritatis ullam, voluptas modi placeat eius dolores optio corporis. Placeat obcaecati pariatur quis veniam illo quam, ex suscipit fuga cupiditate nisi quas dicta, est sapiente nihil. Quam tempora optio illo accusantium obcaecati dicta est ipsum ipsa consectetur temporibus. In minima eligendi aspernatur molestias nostrum maiores, nulla, culpa obcaecati omnis magnam at quas quia vitae hic fugit labore. Consectetur, rerum.
-              </p>
+              
+              <div class="carousel-slide">
+                <img src="../assets/images/project-10-2.png" alt="Project screenshot 3" loading="lazy">
+              <div class="slide-caption">Wiring up #1</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/project-10-3.png" alt="Project screenshot 3" loading="lazy">
+                <div class="slide-caption">Detached component</div>
+              </div>
+              
+              <!-- Navigation arrows -->
+              <button class="carousel-arrow prev" aria-label="Previous slide">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </button>
+              <button class="carousel-arrow next" aria-label="Next slide">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </button>
             </div>
-          </a>
-          </li>
+            
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+              <button class="indicator active" aria-label="Go to slide 1"></button>
+              <button class="indicator" aria-label="Go to slide 2"></button>
+              <button class="indicator" aria-label="Go to slide 3"></button>
+            </div>
+          </div>
+        </section>
 
-        </article>
+        <div class="separator"></div>
+
+        <!-- Related Posts Section -->
+        <section class="blog-posts">
+          <h3 class="h3 section-title">Related Posts</h3>
+
+          <ul class="blog-posts-list">
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img
+                    src="../assets/images/blog-3.jpg"
+                    alt="Home Studio Setup"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Music Production</p>
+                    <span class="dot"></span>
+                    <time datetime="2023-08-10">Aug 10, 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">
+                    Building a Compact Home Studio
+                  </h3>
+
+                  <p class="blog-text">
+                    How I created a professional recording setup in a small apartment space.
+                  </p>
+                </div>
+              </a>
+            </li>
+
+            <li class="blog-post-item">
+              <a href="#">
+                <figure class="blog-banner-box">
+                  <img
+                    src="../assets/images/blog-4.jpg"
+                    alt="MIDI Controller Setup"
+                    loading="lazy"
+                  />
+                </figure>
+
+                <div class="blog-content">
+                  <div class="blog-meta">
+                    <p class="blog-category">Music Technology</p>
+                    <span class="dot"></span>
+                    <time datetime="2023-05-22">May 22, 2023</time>
+                  </div>
+
+                  <h3 class="h3 blog-item-title">
+                    Custom MIDI Controller Mapping
+                  </h3>
+
+                  <p class="blog-text">
+                    Advanced techniques for creating the perfect DAW control surface.
+                  </p>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Navigation -->
+        <div class="separator"></div>
+
+        <nav style="display: flex; justify-content: space-between; align-items: center;">
+          <a
+            href="../index.html#blog"
+            class="form-btn"
+            style="width: auto; padding: 10px 20px; text-decoration: none"
+          >
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            <span>Back to Blog</span>
+          </a>
+
+          <div style="display: flex; gap: 15px">
+            <button class="icon-box" title="Share on Twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+            <button class="icon-box" title="Share on Facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+            <button class="icon-box" title="Share on LinkedIn">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </button>
+          </div>
+        </nav>
+      </article>
       
       </div>
     </main>
@@ -261,6 +459,54 @@
             sidebar.classList.toggle("active");
           });
         }
+      });
+
+      // Carousel functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.gallery-carousel');
+        if (!carousel) return;
+
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const indicators = carousel.querySelectorAll('.indicator');
+        const prevBtn = carousel.querySelector('.prev');
+        const nextBtn = carousel.querySelector('.next');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+          slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentIndex);
+          });
+          
+          indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slides.length;
+          updateCarousel();
+        }
+
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+          updateCarousel();
+        }
+
+        function goToSlide(index) {
+          currentIndex = index;
+          updateCarousel();
+        }
+
+        // Event listeners
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', () => goToSlide(index));
+        });
+
+        // Auto-advance (optional)
+        // setInterval(nextSlide, 5000);
       });
     </script>
   </body>
