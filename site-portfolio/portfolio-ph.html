@@ -187,32 +187,98 @@
 
         <article class="project-details active" data-page="project-details">
           <header>
-            <h2 class="h2 article-title">Under Construction</h2>
+            <h2 class="h2 article-title">Photo Portfolio</h2>
           </header>
-
-          <section class="project-overview">
-            <!-- Project Image -->
-            <div class="project-img" style="height: 300px; margin-bottom: 30px">
-              <img
-                src="../assets/images/img_underconstruction.png"
-                alt="Ansible Infrastructure Automation"
-                style="border-radius: 16px"
-              />
-            </div>
 
             <!-- Project Meta -->
             <div class="blog-meta" style="margin-bottom: 20px">
-              <p class="blog-category">Under Construction</p>
+              <p class="blog-category">Photography</p>
               <div class="dot"></div>
-              <span class="blog-category">Under Construction</span>
+              <span class="blog-category">Photo Portfolio</span>
               <div class="dot"></div>
-              <time datetime="2018-08-20">Sept 04, 2024</time>
+              <time datetime="2024-09-04">Sept 04, 2024</time>
+            </div>
+
+            <div class="content-card">
+              <ul style="color: var(--light-gray); margin: 10px 0; padding: 0; display: flex; justify-content: center; align-items: center; list-style: none;">
+                <li class="social-item">
+                  <a href="https://www.instagram.com/fotografall" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+              </ul>
             </div>
 
             <!-- Project Description -->
             <div class="about-text">
-              <p>This site is currently under construtcion and will be ready soon :)</p>
+              <p>Please simply visit my instagram profile and check out my work. 
+                Hovever some of my photos are also shown below.</p>
             </div>
+          
+          <div class="gallery-carousel">
+            <!-- Carousel container -->
+            <div class="carousel-container">
+              
+              <!-- Slides -->
+              <div class="carousel-slide active">
+                <img src="../assets/images/img_portfolio_ph_1.jpg" alt="Dawwg" loading="lazy">
+                <div class="slide-caption">Dusśka</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_2.jpg" alt="Cat" loading="lazy">
+                <div class="slide-caption">Cat</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_3.jpg" alt="Sardegna" loading="lazy">
+                <div class="slide-caption">Sardegna</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_4.jpg" alt="Cow" loading="lazy">
+                <div class="slide-caption">Cow</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_5.jpg" alt="Madeira-road" loading="lazy">
+                <div class="slide-caption">Road on Madeira</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_6.jpg" alt="Madeira-taxi" loading="lazy">
+                <div class="slide-caption">Real taxi cab on Madeira</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_7.jpg" alt="Madeira-shore" loading="lazy">
+                <div class="slide-caption">Madeira Shore</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="../assets/images/img_portfolio_ph_8.jpg" alt="Madeira-hill" loading="lazy">
+                <div class="slide-caption">Curral das Freiras</div>
+              </div>
+             <!-- Navigation arrows -->
+              <button class="carousel-arrow prev" aria-label="Previous slide">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </button>
+              <button class="carousel-arrow next" aria-label="Next slide">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+              </button>
+            
+             <!-- Indicators -->
+              <div class="carousel-indicators">
+                <button class="indicator active" aria-label="Go to slide 1"></button>
+                <button class="indicator" aria-label="Go to slide 2"></button>
+                <button class="indicator" aria-label="Go to slide 3"></button>
+                <button class="indicator" aria-label="Go to slide 4"></button>
+                <button class="indicator" aria-label="Go to slide 5"></button>
+                <button class="indicator" aria-label="Go to slide 6"></button>
+                <button class="indicator" aria-label="Go to slide 7"></button>
+                <button class="indicator" aria-label="Go to slide 8"></button>
+              </div>
+            </div>
+
+            
+              
+              
+
+          </div>
+        
 
         </article>
       </div>
@@ -223,7 +289,8 @@
   -->
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/musicplayer.js"></script>
-
+    <script src="../assets/js/photocarousel.js"></script>
+    
     <!--
     - ionicon link
   -->
