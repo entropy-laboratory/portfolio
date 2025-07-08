@@ -145,3 +145,33 @@ navigationLinks.forEach((link, index) => {
     window.scrollTo(0, 0);
   });
 });
+
+// Funkcja do nawigacji z filtrem
+function navigateToPortfolioWithFilter(filterValue) {
+  // Przełącz na zakładkę Portfolio
+  document.querySelector('[data-nav-link][data-page="portfolio"]').click();
+  
+  // Poczekaj na przeładowanie DOM
+  setTimeout(() => {
+    // Znajdź i kliknij odpowiedni przycisk filtra
+    const filterButtons = document.querySelectorAll('[data-filter-btn]');
+    filterButtons.forEach(btn => {
+      if (btn.textContent.toLowerCase() === filterValue.toLowerCase()) {
+        btn.click();
+        // Przewiń do sekcji portfolio
+        document.querySelector('[data-page="portfolio"]').scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  }, 100);
+}
+
+// Dodaj nasłuchiwanie kliknięć na elementy service-item
+document.querySelectorAll('.service-item[data-service-link]').forEach(item => {
+  item.addEventListener('click', function() {
+    const filterValue = this.getAttribute('data-service-link');
+    navigateToPortfolioWithFilter(filterValue);
+  });
+});

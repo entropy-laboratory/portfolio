@@ -1391,7 +1391,34 @@ margin-bottom: 100px;}
   font-weight: var(--fw-300);
 }
 
+/* Make service items clickable */
+.service-item {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
 
+.service-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Add a subtle effect to show it's clickable */
+.service-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--white-1);
+  transition: width 0.3s ease;
+}
+
+.service-item:hover::after {
+  width: 80%;
+}
 
 
 
