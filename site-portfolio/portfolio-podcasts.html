@@ -181,14 +181,14 @@
 
         <article class="project-details active" data-page="project-details">
           <header>
-            <h2 class="h2 article-title">Under Construction</h2>
+            <h2 class="h2 article-title">Podcasts </h2>
           </header>
 
           <section class="project-overview">
             <!-- Project Image -->
-            <div class="project-img" style="height: 300px; margin-bottom: 30px">
+            <div class="project-img" style="height: 420px; margin-bottom: 30px">
               <img
-                src="../assets/images/img_underconstruction.png"
+                src="../assets/images/img_portfolio_radio_rmffm.png"
                 alt="Ansible Infrastructure Automation"
                 style="border-radius: 16px"
               />
@@ -196,18 +196,113 @@
 
             <!-- Project Meta -->
             <div class="blog-meta" style="margin-bottom: 20px">
-              <p class="blog-category">Under Construction</p>
+              <p class="blog-category">Podcasts</p>
               <div class="dot"></div>
-              <span class="blog-category">Under Construction</span>
+              <span class="blog-category">Sound & Music Production</span>
               <div class="dot"></div>
-              <time datetime="2018-08-20">Sept 04, 2024</time>
+              <time datetime="2012-04-01">26 Sept, 2016</time>
             </div>
 
             <!-- Project Description -->
             <div class="about-text">
-              <p>This site is currently under construtcion and will be ready soon :)</p>
+              <p>
+                On this site you can find showreel of the music production
+                that I did for Podcasts purposes for various polish podcasters.
+              </p>
+              <p>
+                This concerns: jingles (intro / outro), original music & whole podcast production.
+              </p>
             </div>
 
+            <div class="music-player">
+              <!-- Playlist -->
+              <ul class="playlist" id="playlist">
+                <li data-src="../assets/soundsamples/snd_radio_prod_PLACEHOLDER.mp3" data-title="Opowiem Ci Historię (Intro)" data-artist="Rafał">
+                  <span>Sound composition: Opowiem Ci Historię (Intro)</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_PLACEHOLDER.mp3" data-title="Opowiem Ci Historię (OST)" data-artist="Rafał">
+                  <span>Sound composition: Opowiem Ci Historię (OST)</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_PLACEHOLDER.mp3" data-title="Niewyjaśnione (Intro)" data-artist="Rafał">
+                  <span>Sound composition: Niewyjaśnione (Intro)</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_PLACEHOLDER.mp3" data-title="Mafia PL (Intro)" data-artist="Rafał">
+                  <span>Sound composition: Mafia PL (Intro)</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_RMF_MS_Cielo Drive.mp3" data-title="Production: Misja Specjalna - Cielo Drive" data-artist="Rafał">
+                  <span>Production: Misja Specjalna - Cielo Drive</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_RMF_MS_JFK.mp3" data-title="Production: Misja Specjalna - JFK" data-artist="Rafał">
+                  <span>Production: Misja Specjalna - JFK</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_Wakacje z Duchami (czyt. Starczewski) - odc 5.mp3" data-title="Production: Wakacje z Duchami - odc.5" data-artist="Rafał">
+                  <span>Production: Wakacje z Duchami - odc.5</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_Wakacje z Duchami (czyt. Starczewski) - fragm. odc 8.mp3" data-title="Production: Wakacje z Duchami - odc.8" data-artist="Rafał">
+                  <span>Production: Wakacje z Duchami - odc.8</span>
+                </li>
+                <li data-src="../assets/soundsamples/snd_radio_prod_RMF_MS_Zamach PAPA (fragm)..mp3" data-title="Production: Papież; zamach (fragment with my voiceover)" data-artist="Rafał">
+                  <span>Production: Papież; zamach (fragment with my voiceover)</span>
+                </li>
+              </ul>
+
+              <!-- Player UI -->
+              <div class="music-player-header">
+                <div class="icon-box">
+                  <ion-icon name="musical-notes-outline"></ion-icon>
+                </div>
+                <div class="music-info">
+                  <h4 class="h4 music-title">Select a Track</h4>
+                  <span class="music-artist">No track loaded</span>
+                </div>
+              </div>
+
+              <div class="music-controls">
+                <button class="control-btn" id="playPauseBtn">
+                  <ion-icon name="play-outline"></ion-icon>
+                </button>
+                <button class="control-btn" id="stopBtn">
+                  <ion-icon name="stop-outline"></ion-icon>
+                </button>
+              </div>
+
+              <div class="music-progress">
+                <div class="progress-bar">
+                  <div class="progress-fill"></div>
+                </div>
+                <div class="time-info">
+                  <span class="current-time">0:00</span>
+                  <span class="total-time">0:00</span>
+                </div>
+              </div>
+
+              <div class="volume-control">
+                <ion-icon name="volume-medium-outline"></ion-icon>
+                <div class="volume-slider">
+                  <div class="volume-fill"></div>
+                </div>
+              </div>
+
+              <audio id="audioPlayer" preload="metadata"></audio>
+            </div>
+
+          <section class="project-overview">
+            <div class="video-container">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/0YaxHJ5dozs?si=HrMc8Qx5nDcacJ0z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </section>
+
+          <!-- Back to Portfolio -->
+          <div style="text-align: center; margin-top: 30px">
+            <a
+              href="../index.html#portfolio"
+              class="form-btn"
+              style="display: inline-flex; width: auto"
+            >
+              <ion-icon name="arrow-back-outline"></ion-icon>
+              <span>Back to Portfolio</span>
+            </a>
+          </div>
         </article>
       </div>
     </main>
