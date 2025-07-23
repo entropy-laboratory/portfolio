@@ -280,8 +280,16 @@
               <li style="margin-bottom: 8px">TouchOSC</li>
               <li style="margin-bottom: 8px">Neural Amp Modeller</li>
               <li style="margin-bottom: 8px">Stock and Free VST plugins</li>
+              <li style="margin-bottom: 8px">Custom REAPER script for restoring plugin parameters</li>
             </ul>
           </div>
+
+          <p class="about-text">
+            I’ve created a Lua script in REAPER that loads a saved snapshot of plugin parameters 
+            (like Neural DSP settings) from a JSON file. This allows me to reset effects to 
+            a known state at the beginning of each song. The script integrates seamlessly with 
+            actions triggered by MIDI or TouchOSC.
+         </p>
 
           <h4 class="h4">○   FX Routing</h4>
           <p class="about-text">
@@ -289,6 +297,13 @@
             each dedicated to specific effects. This allows for parallel 
             processing and complex routing that would be impossible with physical pedals.
           </p>
+
+          <p class="about-text">
+            For Archetype Plini, I’ve created a bypass control for the built-in cabinet block using 
+            its parameter <strong>Active Cab</strong>. This lets me route signals through external IR loaders 
+            or real amps via FX Loop with full toggle control.
+          </p>
+
 
           <h3 class="h3">Advanced Features</h3>
           <p class="about-text">
@@ -303,7 +318,28 @@
           </ul>
           </div>
 
-          <h3 class="h3"> Final Results</h3>
+          <h3 class="h3">Looper MIDI – One-Button Configuration</h3>
+          <p class="about-text">
+            Instead of relying on a full looper plugin, I configured a looper in REAPER using native actions and 
+            custom ReaLearn bindings with a one-button MIDI setup using MIDI Captain.
+          </p>
+
+          <div class="content-card">
+            <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+              <li style="margin-bottom: 8px">Short press: Start/stop recording</li>
+              <li style="margin-bottom: 8px">Double tap: Clear loop</li>
+              <li style="margin-bottom: 8px">Long press (hold 1.5s): Overdub toggle</li>
+            </ul>
+          </div>
+
+          <p class="about-text">
+            This is implemented via REAPER actions like <em>"Transport: Record"</em>, 
+            <em>"Track: Remove items"</em>, and <em>"Toggle record overdub"</em> combined 
+            with MIDI Captain’s long press and double-tap message routing. Thanks to ReaLearn’s 
+            conditional mapping system, this setup is minimal and expressive — no screen needed.
+          </p>
+
+                    <h3 class="h3"> Final Results</h3>
           <p class="about-text">
             The completed rig delivers professional-grade tone with unprecedented flexibility.
              It fits in a small backpack yet offers more control than a traditional pedalboard
@@ -332,6 +368,11 @@
               <div class="carousel-slide">
                 <img src="../assets/images/project-10-7.png" alt="Reaper" loading="lazy">
                 <div class="slide-caption">Reaper configuration (still working on it)</div>
+              </div>
+
+              <div class="carousel-slide">
+                <img src="../assets/images/project-10-9.png" alt="Reaper" loading="lazy">
+                <div class="slide-caption">Reaper .lua scripts (in constant improvement and development)</div>
               </div>
               
               <div class="carousel-slide">
@@ -427,28 +468,28 @@
             </li>
 
             <li class="blog-post-item">
-              <a href="#">
+              <a href="../site-blog/blog-post-1.html">
                 <figure class="blog-banner-box">
                   <img
-                    src="../assets/images/blog-4.jpg"
-                    alt="MIDI Controller Setup"
+                    src="../assets/images/blog-1.png"
+                    alt="Hello` World!"
                     loading="lazy"
                   />
                 </figure>
 
                 <div class="blog-content">
                   <div class="blog-meta">
-                    <p class="blog-category">Music Technology</p>
+                    <p class="blog-category">General</p>
                     <span class="dot"></span>
-                    <time datetime="2023-05-22">May 22, 2023</time>
+                    <time datetime="2023-05-22">May 01, 2025</time>
                   </div>
 
                   <h3 class="h3 blog-item-title">
-                    Custom MIDI Controller Mapping
+                    Hello World!
                   </h3>
 
                   <p class="blog-text">
-                    Advanced techniques for creating the perfect DAW control surface.
+                    A brief introduction.
                   </p>
                 </div>
               </a>
