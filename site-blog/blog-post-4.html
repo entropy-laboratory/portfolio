@@ -189,10 +189,10 @@
 
 <article class="blog-post active" data-page="blog-post">
   <header>
-    <h2 class="h2 article-title">ENTROPYSERVER — Building a Personal Digital Ecosystem</h2>
+    <h2 class="h2 article-title">ENTROPYSERVER — A Self-Hosted Cloud and AI Infrastructure</h2>
 
     <div class="blog-meta">
-      <p class="blog-category">Infrastructure / Self-Hosting</p>
+      <p class="blog-category">Infrastructure / Self-Hosting / AI</p>
       <span class="dot"></span>
       <time datetime="2026-02-01">Feb 01, 2026</time>
     </div>
@@ -207,188 +207,205 @@
   </div>
 
   <div class="blog-content">
+
     <p class="about-text">
-      ENTROPYSERVER is not a single server, application, or website.
-      It is a long-term personal project that I treat as a digital laboratory —
-      a place where infrastructure, automation, privacy, and creative workflows
-      come together into one coherent system.
+      ENTROPYSERVER is a personal infrastructure project focused on building a
+      fully self-hosted digital environment. Instead of relying entirely on
+      external cloud providers, I decided to create my own ecosystem for
+      storage, automation, and AI experimentation — running entirely on my
+      own hardware.
     </p>
 
     <p class="about-text">
-      Some parts of the system are already running in daily use,
-      others are still under active development,
-      and a few exist only as architectural assumptions.
-      This gradual, modular growth is intentional.
+      The most interesting part? The entire system currently runs on an
+      old, previously unused laptop that I repurposed into a dedicated
+      home server. What used to sit idle in a drawer is now operating
+      24/7 as a personal cloud platform and automation environment.
     </p>
 
-    <h3 class="h3">What is ENTROPYSERVER?</h3>
+    <h3 class="h3">Project Philosophy</h3>
 
     <p class="about-text">
-      ENTROPYSERVER is a self-hosted ecosystem of services running on my own
-      hardware, designed to replace scattered cloud tools with a unified,
-      controllable environment.
+      ENTROPYSERVER is based on a simple idea: instead of scattering tools
+      and services across multiple external platforms, bring them together
+      into a single, controllable infrastructure that you fully understand
+      and maintain.
     </p>
 
     <p class="about-text">
-      Instead of relying on a single provider or abstracted platforms,
-      the system is built around Linux, Docker, and clearly defined services
-      that can evolve independently without breaking the whole.
+      The project acts as both a practical daily tool and a technical
+      laboratory where I can experiment with infrastructure design,
+      automation pipelines, and AI-assisted workflows.
     </p>
 
-    <h3 class="h3">Infrastructure Foundation</h3>
+    <h3 class="h3">Hardware Foundation</h3>
 
     <p class="about-text">
-      At its core, ENTROPYSERVER runs on a personal server/NAS operating 24/7.
-      Data, configuration, and application layers are clearly separated,
-      allowing safe updates, migrations, and recovery when things go wrong.
+      The core of ENTROPYSERVER is a repurposed personal laptop configured
+      as a small home server running Linux. Although modest compared to
+      enterprise hardware, it is more than capable of running multiple
+      containerized services simultaneously.
+    </p>
+
+    <p class="about-text">
+      This setup demonstrates that meaningful infrastructure projects
+      do not necessarily require expensive hardware — creativity and
+      good architecture can turn unused equipment into powerful tools.
     </p>
 
     <div class="content-card">
       <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
-        <li style="margin-bottom: 8px">Docker and docker-compose based services</li>
-        <li style="margin-bottom: 8px">Strict separation of data and containers</li>
-        <li style="margin-bottom: 8px">Snapshot-based automated backups</li>
-        <li style="margin-bottom: 8px">Local and remote access via VPN</li>
+        <li style="margin-bottom: 8px">Repurposed laptop acting as a 24/7 home server</li>
+        <li style="margin-bottom: 8px">Linux-based operating environment</li>
+        <li style="margin-bottom: 8px">Containerized service architecture</li>
+        <li style="margin-bottom: 8px">Remote management via SSH</li>
       </ul>
     </div>
 
-    <h3 class="h3">Nextcloud — Private Cloud Layer</h3>
+    <h3 class="h3">Containerized Infrastructure</h3>
 
     <p class="about-text">
-      One of the core services running on ENTROPYSERVER is Nextcloud,
-      used as a private replacement for commercial cloud storage solutions.
+      All services inside ENTROPYSERVER run in Docker containers.
+      Containerization provides isolation, reproducibility,
+      and the ability to deploy or migrate services quickly.
     </p>
 
     <p class="about-text">
-      Files, calendars, and shared resources remain fully under my control,
-      without vendor lock-in and without third-party access to personal data.
+      Docker Compose is used to define the entire service stack,
+      allowing the infrastructure to be rebuilt or redeployed
+      with minimal effort.
     </p>
-
-    <h3 class="h3">Automation and Workflow Logic</h3>
-
-    <p class="about-text">
-      Automation plays a key role in the system.
-      Tools like n8n act as the logic layer that connects services together
-      and reacts to events without manual intervention.
-    </p>
-
-    <p class="about-text">
-      The goal is to let the system respond to changes automatically —
-      file uploads, form submissions, repository updates, or publishing actions —
-      while keeping everything transparent and debuggable.
-    </p>
-
-    <h3 class="h3">Backups, Redundancy, and Stability</h3>
-
-    <p class="about-text">
-      ENTROPYSERVER is designed with failure in mind.
-      Disks fail, configurations break, and mistakes happen —
-      so backup and recovery are treated as first-class features.
-    </p>
-
-    <p class="about-text">
-      Fast restoration of entire services and predictable recovery
-      are far more important than theoretical uptime.
-    </p>
-
-    <h3 class="h3">Planned Features and Future Direction</h3>
 
     <div class="content-card">
       <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
-        <li style="margin-bottom: 8px">Centralized logging and monitoring</li>
-        <li style="margin-bottom: 8px">Advanced automation workflows</li>
-        <li style="margin-bottom: 8px">AI-assisted tooling and analysis</li>
-        <li style="margin-bottom: 8px">Clear separation of test and production services</li>
-        <li style="margin-bottom: 8px">Public APIs for selected components</li>
+        <li style="margin-bottom: 8px">Docker-based service deployment</li>
+        <li style="margin-bottom: 8px">Docker Compose orchestration</li>
+        <li style="margin-bottom: 8px">Separated data volumes</li>
+        <li style="margin-bottom: 8px">Internal Docker networking between services</li>
       </ul>
     </div>
 
-    <h3 class="h3">Why “Entropy”?</h3>
+    <h3 class="h3">Private Cloud — Nextcloud</h3>
 
     <p class="about-text">
-      Entropy is a measure of chaos.
-      This project does not try to eliminate chaos,
-      but to work with it in a controlled and predictable way.
+      One of the central components of ENTROPYSERVER is Nextcloud,
+      which serves as a fully private cloud storage solution.
+      It replaces typical commercial services such as Google Drive
+      or Dropbox with a self-hosted alternative.
     </p>
 
     <p class="about-text">
-      Systems evolve, requirements change, and nothing stays static.
-      ENTROPYSERVER is built to absorb that entropy instead of collapsing under it.
+      Files, synchronization, and shared resources are stored locally,
+      ensuring complete control over data ownership and privacy.
     </p>
 
-    <h3 class="h3">Final Thoughts</h3>
-
-    <p class="about-text">
-      ENTROPYSERVER is not a finished product —
-      and most likely never will be.
-    </p>
+    <h3 class="h3">Automation Layer — n8n</h3>
 
     <p class="about-text">
-      It is a living system that grows together with my skills,
-      ideas, and daily needs, serving both as a practical tool
-      and a long-term technical playground.
+      Automation is handled by n8n, an open-source workflow automation
+      platform. It acts as the orchestration layer of the system,
+      connecting services and executing automated tasks.
     </p>
+
+    <p class="about-text">
+      Through workflow logic, the system can react to events,
+      trigger scripts, process data, and automate repetitive
+      tasks without manual interaction.
+    </p>
+
+    <div class="content-card">
+      <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+        <li style="margin-bottom: 8px">Event-driven automation workflows</li>
+        <li style="margin-bottom: 8px">Service integrations</li>
+        <li style="margin-bottom: 8px">Scheduled background processes</li>
+        <li style="margin-bottom: 8px">Future AI-driven automations</li>
+      </ul>
+    </div>
+
+    <h3 class="h3">Database Layer</h3>
+
+    <p class="about-text">
+      Behind the automation system runs PostgreSQL, which provides
+      a reliable database backend for storing workflow data,
+      configurations, and service state.
+    </p>
+
+    <p class="about-text">
+      Separating the database layer from application containers
+      ensures better stability and easier maintenance.
+    </p>
+
+    <h3 class="h3">Local AI Environment</h3>
+
+    <p class="about-text">
+      Another experimental layer of ENTROPYSERVER is local AI execution.
+      Using Ollama, the server can run locally hosted large language
+      models directly on the machine.
+    </p>
+
+    <p class="about-text">
+      This opens the door for building intelligent automations,
+      data analysis pipelines, and AI-assisted workflows without
+      sending sensitive data to external APIs.
+    </p>
+
+    <div class="content-card">
+      <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+        <li style="margin-bottom: 8px">Local LLM execution via Ollama</li>
+        <li style="margin-bottom: 8px">AI integration with automation workflows</li>
+        <li style="margin-bottom: 8px">Experimentation with autonomous agents</li>
+        <li style="margin-bottom: 8px">Fully private AI processing</li>
+      </ul>
+    </div>
+
+    <h3 class="h3">What Has Been Implemented</h3>
+
+    <div class="content-card">
+      <ul style="color: var(--light-gray); margin-left: 20px; margin-top: 10px;">
+        <li style="margin-bottom: 8px">Docker environment installation</li>
+        <li style="margin-bottom: 8px">Container infrastructure setup</li>
+        <li style="margin-bottom: 8px">Nextcloud private cloud deployment</li>
+        <li style="margin-bottom: 8px">PostgreSQL database configuration</li>
+        <li style="margin-bottom: 8px">n8n automation platform installation</li>
+        <li style="margin-bottom: 8px">Ollama AI runtime deployment</li>
+        <li style="margin-bottom: 8px">Local LLM model setup</li>
+        <li style="margin-bottom: 8px">Docker networking between services</li>
+        <li style="margin-bottom: 8px">Service orchestration with docker-compose</li>
+        <li style="margin-bottom: 8px">Remote server management via SSH</li>
+      </ul>
+    </div>
+
+    <h3 class="h3">Future Development</h3>
+
+    <p class="about-text">
+      ENTROPYSERVER is still evolving. The long-term vision includes
+      more advanced automation pipelines, deeper AI integration,
+      monitoring systems, and potentially expanding the infrastructure
+      across multiple machines.
+    </p>
+
+    <p class="about-text">
+      The project will continue to grow as both a practical tool
+      and a playground for exploring self-hosting, infrastructure
+      engineering, and intelligent automation.
+    </p>
+
+    <h3 class="h3">Why Build Something Like This?</h3>
+
+    <p class="about-text">
+      Building your own infrastructure provides a deeper understanding
+      of how modern digital systems actually work. It forces you to
+      think about architecture, reliability, security, and automation
+      in a way that typical cloud usage often hides behind abstractions.
+    </p>
+
+    <p class="about-text">
+      ENTROPYSERVER represents an ongoing journey into building
+      independent digital systems — where experimentation,
+      learning, and practical functionality all meet.
+    </p>
+
   </div>
-
-  <div class="separator"></div>
-
-  <!-- Related Posts Section -->
-  <section class="blog-posts">
-    <h3 class="h3 section-title">Related Posts</h3>
-
-    <ul class="blog-posts-list">
-      <li class="blog-post-item">
-        <a href="../site-blog/blog-post-1.html">
-          <figure class="blog-banner-box">
-            <img
-              src="../assets/images/blog-1.png"
-              alt="Hello World"
-              loading="lazy"
-            />
-          </figure>
-
-          <div class="blog-content">
-            <div class="blog-meta">
-              <p class="blog-category">General</p>
-              <span class="dot"></span>
-              <time datetime="2025-05-01">May 01, 2025</time>
-            </div>
-
-            <h3 class="h3 blog-item-title">Hello World!</h3>
-
-            <p class="blog-text">
-              A short introduction to my personal space on the web.
-            </p>
-          </div>
-        </a>
-      </li>
-    </ul>
-  </section>
-
-  <div class="separator"></div>
-
-  <nav style="display: flex; justify-content: space-between; align-items: center;">
-    <a
-      href="../index.html#blog"
-      class="form-btn"
-      style="width: auto; padding: 10px 20px; text-decoration: none"
-    >
-      <ion-icon name="arrow-back-outline"></ion-icon>
-      <span>Back to Blog</span>
-    </a>
-
-    <div style="display: flex; gap: 15px">
-      <button class="icon-box" title="Share on Twitter">
-        <ion-icon name="logo-twitter"></ion-icon>
-      </button>
-      <button class="icon-box" title="Share on Facebook">
-        <ion-icon name="logo-facebook"></ion-icon>
-      </button>
-      <button class="icon-box" title="Share on LinkedIn">
-        <ion-icon name="logo-linkedin"></ion-icon>
-      </button>
-    </div>
-  </nav>
 </article>
       
       </div>
