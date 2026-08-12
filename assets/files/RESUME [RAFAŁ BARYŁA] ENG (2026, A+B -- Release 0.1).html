@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Rafał Baryła</title>
+    <style>
+        /*-----------------------------------*\
+          DESIGN TOKENS — matched 1:1 to entropy-ops.pl palette
+        \*-----------------------------------*/
+        :root {
+            /* core accent (tangerine) */
+            --tangerine: hsl(24, 100%, 60%);
+            --tangerine-dark: hsl(20, 100%, 50%);
+            --tangerine-soft: hsla(24, 100%, 60%, 0.1);
+
+            --bg-gradient-onyx: linear-gradient(
+                to bottom right,
+                hsl(240, 1%, 25%) 3%,
+                hsl(0, 0%, 19%) 97%
+            );
+            --bg-gradient-jet: linear-gradient(
+                to bottom right,
+                hsla(240, 1%, 18%, 0.251) 0%,
+                hsla(240, 2%, 11%, 0) 100%
+            ), hsl(240, 2%, 13%);
+            --bg-gradient-tangerine-1: linear-gradient(
+                to bottom right,
+                hsl(24, 100%, 60%) 0%,
+                hsla(24, 100%, 60%, 0) 50%
+            );
+            --bg-gradient-tangerine-2: linear-gradient(
+                135deg,
+                hsla(24, 100%, 60%, 0.25) 0%,
+                hsla(24, 100%, 60%, 0) 60%
+            ), hsl(240, 2%, 13%);
+            --border-gradient-onyx: linear-gradient(
+                to bottom right,
+                hsl(0, 0%, 25%) 0%,
+                hsla(0, 0%, 25%, 0) 50%
+            );
+            --text-gradient-tangerine: linear-gradient(
+                to right,
+                hsl(24, 100%, 60%),
+                hsl(20, 100%, 50%)
+            );
+
+            /* surfaces */
+            --paper: hsl(240, 2%, 13%);       /* page background = jet */
+            --panel: hsl(240, 1%, 17%);       /* slightly lifted panel */
+            --onyx: hsl(0, 0%, 19%);
+
+            /* ink / neutrals — light-on-dark hierarchy */
+            --ink-1: hsl(0, 0%, 96%);         /* headings — near white */
+            --ink-2: hsl(0, 0%, 84%);         /* body text */
+            --ink-3: hsl(0, 0%, 62%);         /* muted / dates */
+            --ink-4: hsl(0, 0%, 45%);         /* faint / footer */
+            --hairline: hsl(0, 0%, 27%);
+            --hairline-soft: hsl(0, 0%, 22%);
+
+            --shadow-card: 0 1px 2px hsla(0, 0%, 0%, 0.3), 0 8px 28px hsla(0, 0%, 0%, 0.35);
+
+            --ff-main: 'Poppins', 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--ff-main);
+            color: var(--ink-2);
+            background-color: hsl(240, 2%, 9%);
+            line-height: 1.55;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-size: 13px;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 16mm 18mm;
+            margin: 0 auto;
+            background: var(--bg-gradient-jet);
+            page-break-after: always;
+            position: relative;
+        }
+
+        @media screen {
+            .page {
+                margin: 24px auto;
+                box-shadow: var(--shadow-card);
+                border-radius: 6px;
+                border: 1px solid var(--hairline-soft);
+            }
+        }
+
+        @media print {
+            body { background: var(--paper); }
+            .page {
+                margin: 0;
+                border: none;
+                box-shadow: none;
+                border-radius: 0;
+                width: auto;
+                min-height: auto;
+                page-break-after: always;
+                background: var(--paper);
+            }
+            .page:last-child { page-break-after: avoid; }
+        }
+
+        /*-----------------------------------*\
+          HEADER
+        \*-----------------------------------*/
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding-bottom: 16px;
+            margin-bottom: 22px;
+            border-bottom: 2px solid var(--hairline);
+            position: relative;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 64px;
+            height: 2px;
+            background: var(--text-gradient-tangerine);
+        }
+
+        .header-title h1 {
+            font-size: 27px;
+            font-weight: 600;
+            color: var(--ink-1);
+            letter-spacing: 0.2px;
+            margin-bottom: 5px;
+        }
+
+        .header-title h2 {
+            font-size: 12.5px;
+            background: var(--text-gradient-tangerine);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .contact-info {
+            margin-top: 12px;
+            font-size: 11.5px;
+            color: var(--ink-3);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+
+        .contact-info a {
+            color: var(--ink-2);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s ease, color 0.15s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--tangerine);
+            border-bottom-color: var(--tangerine);
+        }
+
+        /*-----------------------------------*\
+          SECTIONS
+        \*-----------------------------------*/
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        section h3 {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--ink-1);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding-bottom: 8px;
+            margin-bottom: 13px;
+            position: relative;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        section h3::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 26px;
+            height: 2px;
+            background: var(--text-gradient-tangerine);
+        }
+
+        p.profile-summary {
+            font-size: 12.5px;
+            text-align: justify;
+            color: var(--ink-2);
+            line-height: 1.65;
+        }
+
+        /*-----------------------------------*\
+          SKILLS
+        \*-----------------------------------*/
+
+        .skills-container {
+            margin-bottom: 8px;
+        }
+
+        .skills-group {
+            margin-bottom: 10px;
+            font-size: 12.5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px 8px;
+            align-items: baseline;
+        }
+
+        .skills-group strong {
+            color: var(--ink-1);
+            font-weight: 600;
+            flex: 0 0 auto;
+        }
+
+        .skills-group strong::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--tangerine);
+            margin-right: 7px;
+            vertical-align: middle;
+        }
+
+        .skills-list {
+            color: var(--ink-3);
+        }
+
+        /*-----------------------------------*\
+          EXPERIENCE & EDUCATION TIMELINE
+        \*-----------------------------------*/
+
+        .item {
+            margin-bottom: 15px;
+            padding-left: 14px;
+            border-left: 2px solid var(--hairline-soft);
+            position: relative;
+        }
+
+        .item::before {
+            content: "";
+            position: absolute;
+            left: -4.5px;
+            top: 3px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--tangerine);
+            box-shadow: 0 0 0 2px var(--paper), 0 0 8px hsla(24, 100%, 60%, 0.5);
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 10px;
+            font-size: 13px;
+            margin-bottom: 4px;
+        }
+
+        .item-title {
+            font-weight: 600;
+            color: var(--ink-1);
+        }
+
+        .item-company {
+            color: var(--tangerine);
+            font-weight: 600;
+        }
+
+        .item-date {
+            color: var(--ink-3);
+            font-weight: 500;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        .item-desc {
+            font-size: 12px;
+            color: var(--ink-2);
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+
+        .item-desc strong {
+            color: var(--ink-1);
+        }
+
+        ul.item-bullets {
+            font-size: 12px;
+            color: var(--ink-2);
+            padding-left: 16px;
+            line-height: 1.55;
+        }
+
+        ul.item-bullets li {
+            margin-bottom: 3px;
+            position: relative;
+        }
+
+        ul.item-bullets li::marker {
+            color: var(--tangerine);
+        }
+
+        ul.item-bullets li strong {
+            color: var(--ink-1);
+        }
+
+        /*-----------------------------------*\
+          PROFESSIONAL COURSES — card grid
+        \*-----------------------------------*/
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 14px;
+            margin-bottom: 10px;
+        }
+
+        .course-card {
+            padding: 7px 10px;
+            background: var(--panel);
+            border: 1px solid var(--hairline-soft);
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--text-gradient-tangerine);
+        }
+
+        .course-name {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--ink-1);
+            margin-bottom: 2px;
+        }
+
+        .course-meta {
+            display: block;
+            font-size: 10.5px;
+            color: var(--ink-3);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /*-----------------------------------*\
+          FOOTER / RODO CLAUSE
+        \*-----------------------------------*/
+
+        .footer-clause {
+            font-size: 8.5px;
+            color: var(--ink-4);
+            text-align: justify;
+            line-height: 1.45;
+            margin-top: 26px;
+            border-top: 1px solid var(--hairline);
+            padding-top: 9px;
+        }
+
+        /*-----------------------------------*\
+          PRINT FINE-TUNING
+        \*-----------------------------------*/
+
+        @media print {
+            .item { break-inside: avoid; }
+            section { break-inside: avoid-page; }
+            .course-card { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <header>
+            <div class="header-title">
+                <h1>Rafał Baryła</h1>
+                <h2>Automation Scripts Developer | Project Configuration Expert | Prompt Engineer | Media Producer</h2>
+                <div class="contact-info">
+                    <span>📍 Morawskiego, 31-106 Kraków</span>
+                    <span>📞 +48 608 591 913</span>
+                    <span>✉️ <a href="mailto:rav.baryla@gmail.com">rav.baryla@gmail.com</a></span>
+                    <span>🌐 <a href="https://entropy-ops.pl" target="_blank">entropy-ops.pl</a></span>
+                    <span>🔗 <a href="https://linktr.ee/rav.baryla" target="_blank">linktr.ee/rav.baryla</a></span>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <h3>Profile</h3>
+            <p class="profile-summary">
+                A multidisciplinary professional working at the intersection of technology and creativity. With structured experience as a Project Configuration Engineer, Automation Scripts Developer, and Prompt Engineer, I build efficient backend and deployment solutions that bring complex ideas to life. Alongside technical architecture, I am an accomplished music composer, sound designer, and media producer—effectively bridging logic and creativity to deliver immersive, robust audio-visual and automated systems.
+            </p>
+        </section>
+
+        <section>
+            <h3>Skills & Competencies</h3>
+            <div class="skills-container">
+                <div class="skills-group">
+                    <strong>Core Competencies:</strong>
+                    <span class="skills-list">Process Automation, AI Workflow Design, System Architecture, Business Process Design, Project & Team Management, Sound Design & Production, ASPICE (MAN.3, SUP.1, SUP.8), ISO 10007:2017</span>
+                </div>
+                <div class="skills-group">
+                    <strong>Programming & Frameworks:</strong>
+                    <span class="skills-list">Python (Requests, Pandas, Numpy, Jinja2, Flask, Beautiful Soup, OpenPyXL), VBA, HTML5 & CSS3, Bash Scripting, JSON, YAML, Sys, PathLib</span>
+                </div>
+                <div class="skills-group">
+                    <strong>Infrastructure & AI Tools:</strong>
+                    <span class="skills-list">Docker, Docker Compose, n8n, Ollama (Local LLMs), Self-Hosted AI execution, PostgreSQL, Nextcloud, SSH, Traefik, Claude, Gemini</span>
+                </div>
+                <div class="skills-group">
+                    <strong>PM & Engineering Toolchain:</strong>
+                    <span class="skills-list">GitLab, GitHub, TeamCity, Jenkins, Codebeamer, Polarion, JIRA, Confluence, Parasoft DTP, MS Excel, SharePoint, Miro, WordPress</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Professional Experience</h3>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Project Configuration Expert</span> – <span class="item-company">intive</span></div>
+                    <div class="item-date">11.2023 - Present</div>
+                </div>
+                <p class="item-desc">Managing project configuration structures, supporting Project Management (MAN.3) and Quality Management (SUP.1) pipelines by delivering strict configuration status reports and ensuring verified baselines across enterprise tools for critical product milestones.</p>
+                <ul class="item-bullets">
+                    <li>Automated tasks, workflows, and generic engineering processes using custom Python scripts and modern AI-driven layers.</li>
+                    <li>Designed and fully configured enterprise processes within Codebeamer tracker/workflow systems.</li>
+                    <li>Authored and maintained the high-level Project Configuration Management Strategy and Branch Management Strategy in alignment with Software Integration Managers.</li>
+                    <li>Established comprehensive Configuration Management Systems, executed regular baseline audits per PI/Release, and systematically identified configuration items.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Founder / Operations & Sound Lead</span> – <span class="item-company">ENTRO.PY</span></div>
+                    <div class="item-date">01.2015 - Present</div>
+                </div>
+                <p class="item-desc"><strong>Operations (ENTROPYSERVER Cloud Infrastructure):</strong> Architected and maintained a containerized, self-hosted server running on bare-metal personal hardware, integrating advanced workspace cloud utilities and automated AI operations.</p>
+                <ul class="item-bullets">
+                    <li>Deployed Docker and Docker Compose environment featuring strictly segregated, stable service orchestration.</li>
+                    <li>Integrated an n8n automation layer communicating with an isolated PostgreSQL cluster and Ollama backend running localized open-source LLMs.</li>
+                    <li>Designed fully secure remote administrative accesses, custom Docker networks, standard reverse proxies (Traefik), and system monitoring tools.</li>
+                </ul>
+                <p class="item-desc" style="margin-top: 7px;"><strong>Sound Studio & Production Operations:</strong> Commercial mixing, mastering, sound capture, and administrative web management.</p>
+                <ul class="item-bullets">
+                    <li>Mixed and mastered commercial releases for recognizable ensembles (Akustyczni Band, Susanna Jara).</li>
+                    <li>Produced tailored arrangements/soundtracks for prominent True Crime podcasts (Jacek Tomkowicz, Radiowcy Bez Cenzury, Mafijne Historie, Opowiem Ci Historię oraz Niewyjaśnione).</li>
+                    <li>Executed sound engineering directly on live film/video sets (Bar Gwiazd, F4 Team: Uniroyal) and managed custom voiceover recording processes.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <div class="page">
+        <section>
+            <h3>Professional Experience (Continued)</h3>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Project Configuration Engineer</span> – <span class="item-company">Aptiv</span></div>
+                    <div class="item-date">2021 - 10.2022</div>
+                </div>
+                <p class="item-desc">Contributed dynamically to Configuration Manager scopes under complex Automotive ASPICE SUP.8 process conditions across deep cross-functional automotive environments.</p>
+                <ul class="item-bullets">
+                    <li>Conducted high-standard Baseline Audits for cross-functional deliverables, verifying exact tracking criteria with Configuration Managers.</li>
+                    <li>Conceived, coded, and implemented customized script automations to scale project execution metrics.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Product Management & Social Media Artist</span> – <span class="item-company">Omniprint3d</span></div>
+                    <div class="item-date">05.2020 - 05.2021</div>
+                </div>
+                <ul class="item-bullets">
+                    <li>Led high-end macro product photography campaigns and designed unified brand logotypes and company-wide graphic frameworks.</li>
+                    <li>Assembled simple 3D printing proof-of-concept models and constructed optimized multi-platform live-streaming setups for YouTube and Twitch.</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Broadcast Engineer</span> – <span class="item-company">Polish Radio Kraków</span></div>
+                    <div class="item-date">08.2018 - 07.2021</div>
+                </div>
+                <ul class="item-bullets">
+                    <li>Produced and technical-managed real-time radio broadcasts, live music concerts, and complex multi-mic studio recordings.</li>
+                    <li>Supplied technical support for ATEM digital systems, professional camera hardware, and multi-channel audio matrices.</li>
+                    <li>Cooperated with Program Trzeci Polskiego Radia on the production/realization of "Trzecia Strona Księżyca".</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Audio / Video Producer</span> – <span class="item-company">RMF FM Radio</span></div>
+                    <div class="item-date">04.2015 - 07.2018</div>
+                </div>
+                <p class="item-desc">On-air sound engineering and technical realization for major broadcast formats (Fakty RMF FM, Lepsza Połowa Dnia, Poplista+, Wstawaj Szkoda Dnia, Loteria RMF).</p>
+                <ul class="item-bullets">
+                    <li>Produced corporate station jingles, promotional spots, ad packages, and interactive sound design arrays.</li>
+                    <li>Maintained 24/7 playlist sequencing architectures and filmed/edited studio video sessions (Poplista Live Sessions, Poranny Felieton).</li>
+                </ul>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Editor-in-Chief / Technical Director</span> – <span class="item-company">Studenckie Radio17</span></div>
+                    <div class="item-date">04.2012 - 04.2015</div>
+                </div>
+                <ul class="item-bullets">
+                    <li>Directed full editorial boards, managed technical budgets, and deployed complete analog/digital broadcast studios from scratch.</li>
+                    <li>Hosted major events (Juwenalia Krakowskie, Juwenalia AGH) and utilized basic Bash scripting to automate server media execution loops.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h3>Remarkable Projects</h3>
+            <ul class="item-bullets">
+                <li><strong>Automotive Compliance:</strong> Successfully supported ASPICE Level 2 achievement during critical customer assessments, including rigorous Volkswagen audits.</li>
+                <li><strong>Data Processing Automation:</strong> Programmed advanced Python data-fetchers and HTML reporting engines used daily in large automotive development scopes.</li>
+                <li><strong>Portable DSP Guitar Platform:</strong> Engineered an independent hardware/software guitar rack running low-latency processing via a Topton mini-PC, REAPER DSP engines, and MIDI Captain controllers for reliable live use.</li>
+                <li><strong>Raven Trophy Music Project:</strong> Composed, recorded, mixed, mastered, and marketed an independent, multi-instrumental creative musical release.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Audio, Video & Graphics Production Software</h3>
+            <div class="skills-group">
+                <strong>DAW & DSP Chains:</strong> <span class="skills-list">REAPER, ProTools, Adobe Audition, Audiokinetic Wwise (integrated to Unreal Engine 5), Waves, PSP, FabFilter, iZotope Ozone, ReLearn, Native Instruments (Kontakt, Serum, Massive, Absynth)</span>
+            </div>
+            <div class="skills-group">
+                <strong>Video & Imagery:</strong> <span class="skills-list">Adobe Photoshop, Adobe Lightroom, Adobe Premiere, Vegas Pro, OBS Studio, DynaMIX DX, ATEM Mini Software</span>
+            </div>
+        </section>
+
+        <section>
+            <h3>Education & Credentials</h3>
+            <div class="item">
+                <div class="item-header">
+                    <div><span class="item-title">Power Engineering (Bachelor of Engineering)</span> – <span class="item-company">AGH University of Science and Technology</span></div>
+                    <div class="item-date">2010 - 2015</div>
+                </div>
+                <p class="item-desc">Specialization: Devices, Networks, and Power Systems. Particle Image Velocimetry fluid mechanics research using DaVis (LaVision) and CAD environments.</p>
+            </div>
+            <div class="skills-group" style="margin-top: 4px; margin-bottom: 8px;">
+                <strong>Professional Courses</strong>
+            </div>
+            <div class="courses-grid">
+                <div class="course-card">
+                    <span class="course-name">Music and Sound for Games</span>
+                    <span class="course-meta">OUTPOST Academy · 2025</span>
+                </div>
+                <div class="course-card">
+                    <span class="course-name">GIT CI/CD Architecture</span>
+                    <span class="course-meta">Udemy Business · 2024</span>
+                </div>
+                <div class="course-card">
+                    <span class="course-name">Python Complete Track</span>
+                    <span class="course-meta">Code With Mosh / JetBrains Academy · 2022–2023</span>
+                </div>
+                <div class="course-card">
+                    <span class="course-name">Advanced Excel Analytics</span>
+                    <span class="course-meta">Udemy · 2022</span>
+                </div>
+            </div>
+            <div class="skills-group">
+                <strong>Languages:</strong> <span class="skills-list">English (C1) | Polish (Native) | German (A1)</span>
+            </div>
+        </section>
+
+        <div class="footer-clause">
+            Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w CV dla celów obecnych i przyszłych procesów rekrutacyjnych zgodnie z art. 6 ust. 1 lit. a Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych - RODO) oraz ustawy z dnia 10 maja 2018 r. o ochronie danych osobowych (Dz.U.2018 poz.1000).
+        </div>
+    </div>
+
+</body>
+</html>

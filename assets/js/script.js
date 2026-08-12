@@ -99,20 +99,43 @@ filterBtn.forEach(btn => {
   });
 });
 
-// show blog section if URL has #blog
-window.addEventListener("DOMContentLoaded", () => {
-  const hash = window.location.hash;
-  if (hash === "#blog") {
-    showSection("blog");
-  }
-});
-
-function showSection(sectionId) {
-  document.querySelectorAll(".section").forEach(sec => sec.style.display = "none");
-  document.getElementById(sectionId).style.display = "block";
-  document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
-  document.querySelector(`[data-section="${sectionId}"]`)?.classList.add("active");
+// Deep-link support: ?page=portfolio&filter=game-audio-development
+function goToPage(pageName) {
+  const targetLink = Array.from(navigationLinks).find(
+    link => link.innerHTML.trim().toLowerCase() === pageName.toLowerCase()
+  );
+  if (targetLink) targetLink.click();
 }
+
+function applyPortfolioFilter(filterSlug) {
+  // "game-audio-development" -> "game audio development"
+  const filterText = filterSlug.replace(/-/g, " ").toLowerCase();
+
+  const targetBtn = Array.from(filterBtn).find(
+    btn => btn.innerText.trim().toLowerCase() === filterText
+  );
+
+  if (targetBtn) {
+    targetBtn.click(); // reuses your existing filterFunc + active-state logic
+  }
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const page = params.get("page");
+  const filter = params.get("filter");
+
+  if (page) {
+    goToPage(page);
+  }
+
+  if (page === "portfolio" && filter) {
+    // slight delay so the portfolio page/nav click finishes rendering first
+    setTimeout(() => applyPortfolioFilter(filter), 50);
+  }
+
+  window.scrollTo(0, 0);
+});
 
 // contact form variables
 const form = document.querySelector("[data-form]");
@@ -150,7 +173,7 @@ navigationLinks.forEach((link, index) => {
 function navigateToPortfolioWithFilter(filterValue) {
   // Przełącz na zakładkę Portfolio
   document.querySelector('[data-nav-link][data-page="portfolio"]').click();
-  
+
   // Poczekaj na przeładowanie DOM
   setTimeout(() => {
     // Znajdź i kliknij odpowiedni przycisk filtra
@@ -159,7 +182,7 @@ function navigateToPortfolioWithFilter(filterValue) {
       if (btn.textContent.toLowerCase() === filterValue.toLowerCase()) {
         btn.click();
         // Przewiń do sekcji portfolio
-        document.querySelector('[data-page="portfolio"]').scrollIntoView({ 
+        document.querySelector('[data-page="portfolio"]').scrollIntoView({
           behavior: 'smooth',
           block: 'start'
         });
@@ -168,10 +191,11 @@ function navigateToPortfolioWithFilter(filterValue) {
   }, 100);
 }
 
-// Dodaj nasłuchiwanie kliknięć na elementy service-item
+// Make whole service-item box open filtered portfolio in a new tab
 document.querySelectorAll('.service-item[data-service-link]').forEach(item => {
-  item.addEventListener('click', function() {
-    const filterValue = this.getAttribute('data-service-link');
-    navigateToPortfolioWithFilter(filterValue);
+  item.style.cursor = 'pointer';
+  item.addEventListener('click', function () {
+    const filterSlug = this.getAttribute('data-service-link');
+    window.open(`?page=portfolio&filter=${filterSlug}`, '_blank', 'noopener,noreferrer');
   });
 });
