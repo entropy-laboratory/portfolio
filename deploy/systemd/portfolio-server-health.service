@@ -1,0 +1,39 @@
+[Unit]
+Description=Generate public-safe portfolio server health data
+After=local-fs.target
+ConditionPathExists=/srv/www/portfolio/scripts/server-health-collector.py
+
+[Service]
+Type=oneshot
+User=entropy
+Group=entropy
+ExecStart=/usr/bin/python3 /srv/www/portfolio/scripts/server-health-collector.py
+UMask=0027
+TimeoutStartSec=10s
+
+# The collector only needs read access to procfs/sysfs and write access here.
+ProtectSystem=strict
+ReadWritePaths=/srv/www/portfolio/data
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+PrivateNetwork=true
+InaccessiblePaths=-/run/docker.sock
+
+# Drop privilege and kernel-facing capabilities that the collector does not use.
+NoNewPrivileges=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+LockPersonality=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+RestrictNamespaces=true
+ProtectClock=true
+ProtectControlGroups=true
+ProtectHostname=true
+ProtectKernelLogs=true
+ProtectKernelModules=true
+ProtectKernelTunables=true
+RemoveIPC=true
+SystemCallArchitectures=native
+

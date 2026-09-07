@@ -1,0 +1,319 @@
+.dashboard-page {
+  display: block;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.dashboard-kicker {
+  color: var(--orange-tangerine-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.dashboard-intro {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.dashboard-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  white-space: nowrap;
+}
+
+.dashboard-back ion-icon {
+  color: var(--orange-tangerine-crayola);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.dashboard-back:hover,
+.dashboard-back:focus {
+  color: var(--orange-tangerine-crayola);
+}
+
+.dashboard-services .service-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-services .service-item a {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: start;
+  column-gap: 12px;
+  color: inherit;
+}
+
+.dashboard-services .service-icon-box {
+  margin: 2px 0 0;
+  color: var(--orange-tangerine-crayola);
+}
+
+.dashboard-services .service-icon-box ion-icon {
+  color: var(--orange-tangerine-crayola);
+  font-size: 28px;
+}
+
+.dashboard-services .service-content-box {
+  text-align: left;
+}
+
+.dashboard-services .service-item-title {
+  margin-bottom: 7px;
+}
+
+.dashboard-placeholder {
+  opacity: 0.65;
+}
+
+.server-health {
+  margin-bottom: 40px;
+}
+
+.server-health-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.server-health-heading .dashboard-kicker {
+  margin-bottom: 5px;
+}
+
+.health-state {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+  font-weight: var(--fw-400);
+}
+
+.health-state-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--light-gray-70);
+  box-shadow: 0 0 0 3px hsla(0, 0%, 84%, 0.08);
+}
+
+.health-state[data-health-state="ok"] .health-state-dot {
+  background: hsl(145, 45%, 55%);
+  box-shadow: 0 0 0 3px hsla(145, 45%, 55%, 0.12);
+}
+
+.health-state[data-health-state="degraded"] .health-state-dot,
+.health-state[data-health-state="stale"] .health-state-dot {
+  background: var(--orange-tangerine-crayola);
+  box-shadow: 0 0 0 3px hsla(24, 100%, 60%, 0.12);
+}
+
+.health-state[data-health-state="offline"] .health-state-dot {
+  background: var(--bittersweet-shimmer);
+  box-shadow: 0 0 0 3px hsla(0, 43%, 51%, 0.14);
+}
+
+.health-state-separator {
+  color: var(--jet);
+}
+
+.health-state time {
+  display: inline;
+  color: var(--light-gray);
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.health-card {
+  display: block;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 20px;
+  overflow: hidden;
+  background: var(--border-gradient-onyx);
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  isolation: isolate;
+}
+
+.health-card::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+}
+
+.health-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.health-card-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  color: var(--orange-tangerine-crayola);
+  background: hsla(24, 100%, 60%, 0.08);
+  border: 1px solid hsla(24, 100%, 60%, 0.14);
+  border-radius: 8px;
+}
+
+.health-card-icon ion-icon {
+  font-size: 18px;
+}
+
+.health-primary {
+  display: flex;
+  align-items: baseline;
+  min-height: 41px;
+  color: var(--white-2);
+  font-size: 30px;
+  font-weight: var(--fw-500);
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.health-unit {
+  margin-left: 4px;
+  color: var(--light-gray-70);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-400);
+}
+
+.health-uptime {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.health-detail {
+  min-height: 21px;
+  margin-top: 5px;
+  color: var(--light-gray-70);
+  font-size: var(--fs-7);
+  line-height: 1.6;
+}
+
+.health-detail strong {
+  display: inline;
+  color: var(--light-gray);
+  font-weight: var(--fw-500);
+}
+
+.health-progress {
+  height: 5px;
+  margin-top: 15px;
+  overflow: hidden;
+  background: var(--jet);
+  border-radius: 999px;
+}
+
+.health-progress span {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(to right, var(--vegas-gold), var(--orange-tangerine-crayola));
+  border-radius: inherit;
+  transition: width var(--transition-1);
+}
+
+.health-load {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.health-load div {
+  min-width: 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--jet);
+}
+
+.health-load dt {
+  color: var(--light-gray-70);
+  font-size: var(--fs-8);
+}
+
+.health-load dd {
+  margin-top: 3px;
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+}
+
+@media (max-width: 900px) {
+  .health-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .dashboard-page {
+    padding: 35px 15px 50px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .dashboard-services .service-list {
+    grid-template-columns: 1fr;
+  }
+
+  .server-health {
+    margin-bottom: 32px;
+  }
+
+  .server-health-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .health-state {
+    justify-content: flex-start;
+  }
+
+  .health-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .health-progress span {
+    transition: none;
+  }
+}

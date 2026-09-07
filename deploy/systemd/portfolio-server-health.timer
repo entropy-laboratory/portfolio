@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh portfolio server health data every 15 seconds
+
+[Timer]
+OnBootSec=5s
+OnUnitActiveSec=15s
+AccuracySec=1s
+Unit=portfolio-server-health.service
+
+[Install]
+WantedBy=timers.target

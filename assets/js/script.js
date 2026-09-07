@@ -142,6 +142,51 @@ const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
 
+// Service dashboard login uses the server's HTTPS authentication layer.
+const serviceLoginForm = document.querySelector("[data-service-login]");
+const serviceLoginStatus = document.querySelector("[data-service-login-status]");
+
+if (serviceLoginForm) {
+  serviceLoginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(serviceLoginForm);
+    const username = formData.get("username");
+    const password = formData.get("password");
+    const credentials = btoa(`${username}:${password}`);
+
+    serviceLoginStatus.textContent = "Checking credentials...";
+
+    try {
+      const response = await fetch("./service-dashboard.html", {
+        headers: { Authorization: `Basic ${credentials}` },
+        cache: "no-store"
+      });
+
+      if (!response.ok) {
+        throw new Error("Invalid credentials");
+      }
+
+      const dashboardHtml = await response.text();
+      const dashboardDocument = new DOMParser().parseFromString(dashboardHtml, "text/html");
+
+      serviceLoginForm.reset();
+      window.history.replaceState({}, "", "./service-dashboard.html");
+      document.documentElement.replaceWith(dashboardDocument.documentElement);
+
+      if (!document.querySelector("script[data-server-health]")) {
+        const healthScript = document.createElement("script");
+        healthScript.src = "/assets/js/server-health.js?v=20260907-auth-flow";
+        healthScript.dataset.serverHealth = "true";
+        healthScript.addEventListener("load", () => window.initServerHealth?.(), { once: true });
+        document.body.appendChild(healthScript);
+      }
+    } catch (error) {
+      serviceLoginStatus.textContent = "Unable to sign in. Check your credentials.";
+    }
+  });
+}
+
 // add input event to all form inputs
 formInputs.forEach(input => {
   input.addEventListener("input", function () {

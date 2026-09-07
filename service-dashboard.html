@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entro.PY - Service Dashboard</title>
+    <link rel="shortcut icon" href="./assets/images/logo.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/service-dashboard.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="dashboard-page">
+      <header class="dashboard-header">
+        <div>
+          <p class="dashboard-kicker">Private services</p>
+          <h1 class="h2">Service dashboard</h1>
+          <p class="dashboard-intro">Quick access to your self-hosted services.</p>
+        </div>
+        <a class="dashboard-back" href="./index.html?page=service">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+          <span>Back to portfolio</span>
+        </a>
+      </header>
+
+      <section class="server-health" aria-labelledby="server-health-title">
+        <div class="server-health-heading">
+          <div>
+            <p class="dashboard-kicker">Live telemetry</p>
+            <h2 class="h3" id="server-health-title">Server health</h2>
+          </div>
+          <div class="health-state" data-health-state="loading" aria-live="polite" aria-atomic="true">
+            <span class="health-state-dot" aria-hidden="true"></span>
+            <span data-health-status>Connecting</span>
+            <span class="health-state-separator" aria-hidden="true">·</span>
+            <span>Updated <time data-health-updated>—</time></span>
+          </div>
+        </div>
+
+        <div class="health-grid">
+          <article class="health-card">
+            <div class="health-card-heading">
+              <div class="health-card-icon" aria-hidden="true"><ion-icon name="speedometer-outline"></ion-icon></div>
+              <h3 class="h4">CPU</h3>
+            </div>
+            <p class="health-primary"><span data-metric="cpu-usage">—</span><span class="health-unit" data-unit="cpu-usage" hidden>%</span></p>
+            <p class="health-detail">Package temperature <strong data-metric="cpu-temperature">—</strong></p>
+          </article>
+
+          <article class="health-card">
+            <div class="health-card-heading">
+              <div class="health-card-icon" aria-hidden="true"><ion-icon name="hardware-chip-outline"></ion-icon></div>
+              <h3 class="h4">Memory</h3>
+            </div>
+            <p class="health-primary"><span data-metric="memory-percent">—</span><span class="health-unit" data-unit="memory-percent" hidden>%</span></p>
+            <p class="health-detail" data-metric="memory-size">—</p>
+            <div class="health-progress" data-progress="memory" role="progressbar" aria-label="Memory usage" aria-valuemin="0" aria-valuemax="100">
+              <span></span>
+            </div>
+          </article>
+
+          <article class="health-card">
+            <div class="health-card-heading">
+              <div class="health-card-icon" aria-hidden="true"><ion-icon name="server-outline"></ion-icon></div>
+              <h3 class="h4">Disk</h3>
+            </div>
+            <p class="health-primary"><span data-metric="disk-percent">—</span><span class="health-unit" data-unit="disk-percent" hidden>%</span></p>
+            <p class="health-detail" data-metric="disk-size">—</p>
+            <div class="health-progress" data-progress="disk" role="progressbar" aria-label="Root filesystem usage" aria-valuemin="0" aria-valuemax="100">
+              <span></span>
+            </div>
+          </article>
+
+          <article class="health-card">
+            <div class="health-card-heading">
+              <div class="health-card-icon" aria-hidden="true"><ion-icon name="pulse-outline"></ion-icon></div>
+              <h3 class="h4">System</h3>
+            </div>
+            <p class="health-primary health-uptime" data-metric="uptime">—</p>
+            <p class="health-detail">Uptime</p>
+            <dl class="health-load" aria-label="Load average">
+              <div><dt>1m</dt><dd data-metric="load-1">—</dd></div>
+              <div><dt>5m</dt><dd data-metric="load-5">—</dd></div>
+              <div><dt>15m</dt><dd data-metric="load-15">—</dd></div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section class="service dashboard-services" aria-label="Available services">
+        <ul class="service-list">
+          <li class="service-item">
+            <a href="https://home.entropy-ops.pl/home/overview" target="_blank" rel="noopener noreferrer">
+              <div class="service-icon-box"><ion-icon name="home-outline"></ion-icon></div>
+              <div class="service-content-box"><h2 class="h4 service-item-title">Home Assistant</h2><p class="service-item-text">Home monitoring and automation.</p></div>
+            </a>
+          </li>
+          <li class="service-item">
+            <a href="https://entropy-ops.pl/" target="_blank" rel="noopener noreferrer">
+              <div class="service-icon-box"><ion-icon name="globe-outline"></ion-icon></div>
+              <div class="service-content-box"><h2 class="h4 service-item-title">Operations portal</h2><p class="service-item-text">Main Entropy Operations website.</p></div>
+            </a>
+          </li>
+          <li class="service-item">
+            <a href="https://cloud.entropy-ops.pl/apps/dashboard/" target="_blank" rel="noopener noreferrer">
+              <div class="service-icon-box"><ion-icon name="cloud-outline"></ion-icon></div>
+              <div class="service-content-box"><h2 class="h4 service-item-title">Nextcloud</h2><p class="service-item-text">Private files and collaboration.</p></div>
+            </a>
+          </li>
+          <li class="service-item">
+            <a href="https://n8n.entropy-ops.pl/home/workflows" target="_blank" rel="noopener noreferrer">
+              <div class="service-icon-box"><ion-icon name="git-network-outline"></ion-icon></div>
+              <div class="service-content-box"><h2 class="h4 service-item-title">n8n workflows</h2><p class="service-item-text">Automation workflows and integrations.</p></div>
+            </a>
+          </li>
+          <li class="service-item dashboard-placeholder">
+            <div class="service-icon-box"><ion-icon name="add-circle-outline"></ion-icon></div>
+            <div class="service-content-box"><h2 class="h4 service-item-title">New service</h2><p class="service-item-text">Reserved for a future service.</p></div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./assets/js/server-health.js"></script>
+  </body>
+</html>
