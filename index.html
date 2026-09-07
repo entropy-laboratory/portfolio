@@ -196,6 +196,10 @@
             </li>
 
             <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Service</button>
+            </li>
+
+            <li class="navbar-item">
               <button class="navbar-link" data-nav-link>Contact</button>
             </li>
           </ul>
@@ -2273,6 +2277,53 @@ Combines engineering experience with 10+ years of hands-on technical work in aud
         </article>
 
         <!--
+        - #SERVICE
+      -->
+
+        <article class="service-page" data-page="service">
+          <header>
+            <h2 class="h2 article-title">Service</h2>
+          </header>
+
+          <section class="service-login">
+            <h3 class="h3 form-title">Private dashboard</h3>
+            <p class="service-login-text">
+              Sign in to open the private service dashboard. Your credentials
+              are sent only to the protected server endpoint and are not stored
+              in this page.
+            </p>
+
+            <form class="form" data-service-login autocomplete="on">
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  name="username"
+                  class="form-input"
+                  placeholder="Username"
+                  autocomplete="username"
+                  required
+                />
+
+                <input
+                  type="password"
+                  name="password"
+                  class="form-input"
+                  placeholder="Password"
+                  autocomplete="current-password"
+                  required
+                />
+              </div>
+
+              <button class="form-btn" type="submit">
+                <ion-icon name="lock-open-outline"></ion-icon>
+                <span>Open dashboard</span>
+              </button>
+              <p class="service-login-status" data-service-login-status role="status"></p>
+            </form>
+          </section>
+        </article>
+
+        <!--
         - #CONTACT
       -->
 
@@ -2337,7 +2388,7 @@ Combines engineering experience with 10+ years of hands-on technical work in aud
     <!--
     - custom js link
   -->
-    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script.js?v=20260906-service-login"></script>
 
     <!--
     - ionicon link

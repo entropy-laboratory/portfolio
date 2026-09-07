@@ -621,6 +621,118 @@ main {
   line-height: 1.6;
 }
 
+.service-login {
+  max-width: 620px;
+}
+
+.service-login-text,
+.dashboard-intro {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.service-login-status {
+  min-height: 22px;
+  color: var(--bittersweet-shimmer);
+  font-size: var(--fs-7);
+  margin-top: 15px;
+}
+
+.dashboard-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.dashboard-kicker {
+  color: var(--orange-tangerine-crayola);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.dashboard-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--light-gray);
+  font-size: var(--fs-7);
+  white-space: nowrap;
+}
+
+.dashboard-back ion-icon {
+  color: var(--orange-tangerine-crayola);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.dashboard-back:hover,
+.dashboard-back:focus {
+  color: var(--orange-tangerine-crayola);
+}
+
+.dashboard-services .service-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.dashboard-services .service-item a {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: start;
+  column-gap: 12px;
+  color: inherit;
+}
+
+.dashboard-services .service-icon-box {
+  margin: 2px 0 0;
+  color: var(--orange-tangerine-crayola);
+}
+
+.dashboard-services .service-icon-box ion-icon {
+  color: var(--orange-tangerine-crayola);
+  font-size: 28px;
+}
+
+.dashboard-services .service-content-box {
+  text-align: left;
+}
+
+.dashboard-services .service-item-title {
+  margin-bottom: 7px;
+}
+
+.dashboard-placeholder {
+  opacity: 0.65;
+}
+
+@media (max-width: 580px) {
+  .dashboard-page {
+    padding: 35px 15px 50px;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .dashboard-services .service-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 /**
  * #testimonials 
  */
@@ -1763,7 +1875,13 @@ textarea.form-input::-webkit-resizer {
 }
 
 .form-btn ion-icon {
-  font-size: 16px;
+  color: var(--orange-tangerine-crayola);
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.form-btn span {
+  white-space: nowrap;
 }
 
 .form-btn:hover {
@@ -2309,7 +2427,7 @@ textarea.form-input::-webkit-resizer {
   }
 
   .form-btn ion-icon {
-    font-size: 18px;
+    font-size: 24px;
   }
 
 }
