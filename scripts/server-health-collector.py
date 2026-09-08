@@ -15,7 +15,7 @@ from typing import Optional
 
 OUTPUT_DIRECTORY = Path("/srv/www/portfolio/data")
 OUTPUT_FILE = OUTPUT_DIRECTORY / "server-status.json"
-
+ROOM_CLIMATE_FILE = OUTPUT_DIRECTORY / "room-climate.json"
 
 def percentage(used: int | float, total: int | float) -> Optional[float]:
     if total <= 0:
@@ -170,6 +170,40 @@ def collect_load_average() -> Optional[dict[str, float]]:
     except (OSError, AttributeError):
         return None
 
+def collect_room_climate() -> dict[str, object]:
+    try:
+        data = json.loads(ROOM_CLIMATE_FILE.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {
+            "temperature_celsius": None,
+            "humidity_percent": None,
+            "battery": None,
+            "updated_at": None,
+        }
+
+    temperature = data.get("temperature_celsius")
+    humidity = data.get("humidity_percent")
+    battery = data.get("battery")
+    updated_at = data.get("updated_at")
+
+    if not isinstance(temperature, (int, float)):
+        temperature = None
+
+    if not isinstance(humidity, (int, float)):
+        humidity = None
+
+    if not isinstance(battery, str):
+        battery = None
+
+    if not isinstance(updated_at, str):
+        updated_at = None
+
+    return {
+        "temperature_celsius": temperature,
+        "humidity_percent": humidity,
+        "battery": battery,
+        "updated_at": updated_at,
+    }
 
 def collect_snapshot() -> dict[str, object]:
     cpu_usage = collect_cpu_usage()
@@ -204,6 +238,7 @@ def collect_snapshot() -> dict[str, object]:
         "load_average": load_average
         if load_average is not None
         else {"1m": None, "5m": None, "15m": None},
+	"room": collect_room_climate(),
         "containers": {"running": None},
     }
 

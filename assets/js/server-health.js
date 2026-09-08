@@ -27,6 +27,12 @@
     if (unit) unit.hidden = !isNumber(value);
   }
 
+  function setRoomMetric(name, value, decimals) {
+    metric(name).textContent = displayNumber(value, decimals);
+    const unit = document.querySelector(`[data-unit="${name}"]`);
+    if (unit) unit.hidden = !isNumber(value);
+  }
+
   function displayGiB(used, total) {
     if (!isNumber(used) || !isNumber(total) || used < 0 || total <= 0) return "—";
     const gibibyte = 1024 ** 3;
@@ -73,6 +79,7 @@
     const memory = data?.memory;
     const disk = data?.disk;
     const load = data?.load_average;
+    const room = data?.room;
 
     setPercentage("cpu-usage", cpu?.usage_percent);
     metric("cpu-temperature").textContent = isNumber(cpu?.temperature_celsius)
@@ -86,8 +93,32 @@
     metric("load-1").textContent = displayNumber(load?.["1m"], 2);
     metric("load-5").textContent = displayNumber(load?.["5m"], 2);
     metric("load-15").textContent = displayNumber(load?.["15m"], 2);
+    setRoomMetric("room-temperature", room?.temperature_celsius, 1);
+    setRoomMetric("room-humidity", room?.humidity_percent, 0);
     setProgress("memory", memory?.usage_percent);
     setProgress("disk", disk?.usage_percent);
+  }
+
+  function updateRoomFreshness(data) {
+    const updatedAt = typeof data?.room?.updated_at === "string"
+      ? new Date(data.room.updated_at)
+      : null;
+    const hasValidTimestamp = updatedAt && !Number.isNaN(updatedAt.getTime());
+
+    document.querySelectorAll("[data-room-updated-detail]").forEach((detail) => {
+      detail.hidden = !hasValidTimestamp;
+    });
+
+    document.querySelectorAll("[data-room-updated]").forEach((time) => {
+      if (!hasValidTimestamp) {
+        time.removeAttribute("datetime");
+        time.textContent = "—";
+        return;
+      }
+
+      time.dateTime = updatedAt.toISOString();
+      time.textContent = updatedAt.toLocaleString();
+    });
   }
 
   function updateFreshness(data) {
@@ -127,6 +158,7 @@
       if (!response.ok) throw new Error("Health data unavailable");
       const data = await response.json();
       updateMetrics(data);
+      updateRoomFreshness(data);
       updateFreshness(data);
     } catch {
       setState("offline", "Offline");
